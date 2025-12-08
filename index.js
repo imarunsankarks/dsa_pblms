@@ -183,5 +183,12 @@ const arrayUnion = (a1, a2) => {
     return merged.sort()
 }
 
-console.log(arrayUnion([8, 2, 4, 6, 3], [5, 1, 1, 0, 9, 8, 6, 2]))
+// console.log(arrayUnion([8, 2, 4, 6, 3], [5, 1, 1, 0, 9, 8, 6, 2]))
 
+const oneToN = (n) => {
+    if (n === 0) return;
+    oneToN(n - 1);
+    console.log(n);
+};
+
+oneToN(10);
