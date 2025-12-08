@@ -176,5 +176,12 @@ const selectSort = (arr) => {
     }
     return arr
 }
-console.log(selectSort([8, 2, 4, 6, 3, 5, 1, 1, 0, 9, 8, 6, 2]))
+// console.log(selectSort([8, 2, 4, 6, 3, 5, 1, 1, 0, 9, 8, 6, 2]))
+
+const arrayUnion = (a1, a2) => {
+    let merged = [...new Set([...a1, ...a2])]
+    return merged.sort()
+}
+
+console.log(arrayUnion([8, 2, 4, 6, 3], [5, 1, 1, 0, 9, 8, 6, 2]))
 
