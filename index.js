@@ -191,4 +191,20 @@ const oneToN = (n) => {
     console.log(n);
 };
 
-oneToN(10);
+// oneToN(10);
+
+const largestSubArraySum = (arr) => {
+    let sum = 0
+    let largeSum = -Infinity
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i]
+        if (arr[i] + sum < 0) {
+            sum = Math.max(arr[i], sum)
+        }
+        largeSum = Math.max(largeSum, sum)
+    }
+    return largeSum
+
+}
+console.log(largestSubArraySum([2, 2, -7, 11]))
+
