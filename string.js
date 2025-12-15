@@ -24,6 +24,16 @@ const commonPrefix = (arr) => {
         i++
     }
     return first.substring(0, i)
+
+    // if (strs.length === 0) return "";
+
+    // return strs.reduce((a, b) => {
+    //     let i = 0;
+    //     while (i < a.length && i < b.length && a[i] === b[i]) {
+    //         i++;
+    //     }
+    //     return a.slice(0, i);
+    // });
 }
 
 // console.log(commonPrefix(['profile', 'profix', 'proplan', 'pro']));
