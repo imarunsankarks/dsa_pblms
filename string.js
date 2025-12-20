@@ -60,7 +60,23 @@ const isomorphic = (s, t) => {
     }
 }
 
-console.log(isomorphic("bbbaaaba", "aaabbbba"));
+// console.log(isomorphic("bbbaaaba", "aaabbbba"));
+
+const rotateString = (s, goal) => {
+    let i = 0
+    while (i < s.length) {
+        let s1 = s.slice(1) + s[0]
+        s = s1
+        if (s1 === goal) {
+            return true
+        }
+        i++
+    }
+    return false
+}
+
+// console.log(rotateString("defdefdefabcabc", "defdefabcabcdef"));
+console.log(rotateString("abcde", "abced"));
 
 
 
