@@ -21,4 +21,22 @@ const pairs = (a, k) => {
 
 }
 
-pairs([1, 3, 5, 6, 7, 9], 8);
+// pairs([1, 3, 5, 6, 7, 9], 8);
+
+const removeDupli = (a) => {
+    if (a.length === 0) return a;
+
+    let slow = 0;
+
+    for (let fast = 1; fast < a.length; fast++) {
+        if (a[fast] !== a[slow]) {
+            slow++;
+            a[slow] = a[fast];
+        }
+    }
+
+    return a.slice(0, slow + 1);
+};
+
+console.log(removeDupli([1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 5, 5]));
+
