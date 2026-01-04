@@ -62,4 +62,27 @@ const findLast = (a, k) => {
 };
 
 
-console.log(firstNLast([0, 0, 1, 1, 1, 4, 5, 5], 2));
+// console.log(firstNLast([0, 0, 1, 1, 1, 4, 5, 5], 2));
+
+const searchInsert = (a, k) => {
+    let left = 0,
+        right = a.length - 1;
+    while (left <= right) {
+        mid = Math.floor((left + right) / 2);
+        if (a[mid] == k) {
+            return mid;
+        } else if (a[mid] > k) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    if (a[0] > k) {
+        return 0
+    } else if (a[a.length - 1] < k) {
+        return a.length
+    } else
+        return right + 1 >= a.length ? left : right + 1;
+};
+
+console.log(searchInsert([1, 3, 5], 1));
