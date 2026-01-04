@@ -1,16 +1,17 @@
 const bsearch = (a, k) => {
     let left = 0,
         right = a.length - 1;
-    let mid = parseInt(left + right / 2);
-    while (a[mid] != k) {
-        if (a[mid] > k) {
-            right = mid;
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if (a[mid] == k) {
+            return mid
+        } else if (a[mid] > k) {
+            right = mid - 1;
         } else {
-            left = mid;
+            left = mid + 1;
         }
-        mid = parseInt(left + right / 2);
     }
-    return mid;
+    return -1;
 };
 
 // console.log(bsearch([1, 3, 5, 7, 7, 7, 7, 8, 11, 23, 56], 7));
@@ -85,4 +86,38 @@ const searchInsert = (a, k) => {
         return right + 1 >= a.length ? left : right + 1;
 };
 
-console.log(searchInsert([1, 3, 5], 1));
+// console.log(searchInsert([1, 3, 5], 1));
+
+const rotatedSorted = (a, k) => {
+    let arr = [...a]
+    let first = find(arr.splice(0, arr.length - 3), k)
+    let second = find(arr.splice(arr.length - 3, arr.length), k)
+    if (first == -1) {
+        return a.length - 3 + second
+    } else if (second == -1) {
+        return first
+    } else {
+        return second
+    }
+
+}
+
+function find(a, k) {
+    let left = 0,
+        right = a.length - 1;
+    while (left <= right) {
+        mid = Math.floor((left + right) / 2);
+        if (a[mid] == k) {
+            return mid;
+        } else if (a[mid] > k) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return -1
+}
+
+console.log(rotatedSorted([4, 5, 6, 7, 1, 2, 3], 7));
+
+
