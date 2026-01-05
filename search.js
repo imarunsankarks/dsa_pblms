@@ -90,10 +90,12 @@ const searchInsert = (a, k) => {
 
 const rotatedSorted = (a, k) => {
     let arr = [...a]
-    let first = find(arr.splice(0, arr.length - 3), k)
-    let second = find(arr.splice(arr.length - 3, arr.length), k)
-    if (first == -1) {
-        return a.length - 3 + second
+    let rot = findSmall(a)
+    let first = find(arr.slice(0, rot), k)
+    let second = find(arr.slice(rot), k)
+
+    if (first == -1 && second != -1) {
+        return arr.slice(0, rot).length + second
     } else if (second == -1) {
         return first
     } else {
@@ -105,6 +107,7 @@ const rotatedSorted = (a, k) => {
 function find(a, k) {
     let left = 0,
         right = a.length - 1;
+
     while (left <= right) {
         mid = Math.floor((left + right) / 2);
         if (a[mid] == k) {
@@ -115,9 +118,24 @@ function find(a, k) {
             left = mid + 1;
         }
     }
-    return -1
+    return a[0] == k ? 0 : -1
 }
 
-console.log(rotatedSorted([4, 5, 6, 7, 1, 2, 3], 7));
+function findSmall(a) {
+    let left = 0,
+        right = a.length - 1;
+    while (left <= right) {
+        mid = Math.floor((left + right) / 2);
+        if (a[mid] > a[right]) {
+            left = mid + 1
+        } else if (a[mid] < a[mid + 1] && a[mid] < a[mid - 1]) {
+            return mid
+        } else {
+            right = mid - 1;
+        }
+    }
+    return left
+}
+console.log(rotatedSorted([4, 5, 6, 7, 0, 1, 2], 0));
 
 
