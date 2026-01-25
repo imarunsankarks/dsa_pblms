@@ -136,6 +136,23 @@ function findSmall(a) {
     }
     return left
 }
-console.log(rotatedSorted([4, 5, 6, 7, 0, 1, 2], 0));
+// console.log(rotatedSorted([4, 5, 6, 7, 0, 1, 2], 0));
 
+function findPeak(a) {
+    let left = 0,
+        right = a.length - 1;
+    while (left <= right) {
+        mid = Math.floor((left + right) / 2);
+        if (a[mid] > a[right]) {
+            left = mid + 1
+        } else if (a[mid] < a[mid + 1] && a[mid] < a[mid - 1]) {
+            return mid
+        } else {
+            right = mid - 1;
+        }
+    }
+    return left
+}
+
+console.log(findPeak([4, 5, 6, 7, 0, 1, 2]));
 
