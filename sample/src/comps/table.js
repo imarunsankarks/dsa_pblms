@@ -1,20 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
+import { useApiCall } from "../hooks/api";
 
 function Table() {
     const [user, setUser] = useState([]);
+    const {data,err} = useApiCall("https://jsonplaceholder.typicode.com/users", true)
     useEffect(() => {
-        const dataFetch = async () => {
-            try {
-                const res = await fetch("https://jsonplaceholder.typicode.com/users");
-                const data = await res.json();
-
-                setUser(data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        dataFetch();
-    }, []);
+        setUser(data);
+    }, [data]);
     const sortData = useCallback(
         (val) => {
             const sorted = [...user].sort((a, b) => {
