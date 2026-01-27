@@ -6,7 +6,7 @@ export default function App() {
   const { theme, toggleTheme } = useTheme();
   return (
     <div className={theme}>
-      <button onClick={toggleTheme}>Toggle</button>
+      <button onClick={toggleTheme}>Toggle Theme</button>
       <Table />
       <Search />
     </div>
